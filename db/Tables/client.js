@@ -40,5 +40,9 @@ export async function createClient (sequelize)
       const result = await client.create(item);
       return result.toJSON();
     },
+    async find(client) {
+      const result =  await User.findByPk(client);
+      return result.toJSON();
+  },
   };
 }
