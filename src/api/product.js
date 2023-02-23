@@ -11,7 +11,7 @@ export function createProductRoute(db) {
     router.post("/", async (req, res) => {
       try {
         const product = req.body;
-        const result = await db.insert(product);
+        const result = await db.product.insert(product)
         res.status(201).json({ status: "created", data: result });
       } catch (e) {
         res.status(400).json({ status: "invalid input" });

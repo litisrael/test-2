@@ -12,3 +12,17 @@ export async function initTables(connection) {
     }
 
 } 
+
+//import { getConnection } from "../connection.js";
+
+// async function test (){
+// const connection = await getConnection()
+// const db = createProduct(connection)
+// ;(await db).insert({
+//         skdu: "fghjk",
+//         sapak: "marta",
+//          price: "678"
+//       })
+// }
+// test()
+

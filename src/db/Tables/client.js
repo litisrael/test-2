@@ -1,13 +1,11 @@
 import { Sequelize, DataTypes, Model } from "sequelize";
 
-
-export async function createClient (sequelize)
-{
+export async function createClient(sequelize) {
   const client = sequelize.define(
     "clients",
     {
       id: {
-        type: DataTypes.BIGINT,
+        type: DataTypes.STRING,
         primaryKey: true,
       },
       name: {
@@ -26,23 +24,24 @@ export async function createClient (sequelize)
     {
       schema: "store",
     }
-  )
-  client.sync()
-  .then(() => {
-    console.log('Tabla creada');
-  })
-  .catch((error) => {
-    console.error('Error al crear la tabla:', error);
-  });
+  );
+  client
+    .sync()
+    .then(() => {
+      console.log("Tabla  client creada");
+    })
+    .catch((error) => {
+      console.error("Error al crear la tabla ckient:", error);
+    });
   return {
     Schema: client,
     insert: async (item) => {
       const result = await client.create(item);
       return result.toJSON();
     },
-    async find(client) {
-      const result =  await User.findByPk(client);
+    async find(item) {
+      const result = await client.findByPk(item);
       return result.toJSON();
-  },
+    },
   };
 }
