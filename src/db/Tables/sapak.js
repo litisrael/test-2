@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes, Model } from "sequelize";
 
-function createTableSapak (pablo){
-    const sapak = pablo.define("sapak",{
+export async function createTableSapak (test){
+    const sapak = test.define("sapak",{
         companyNumber: {
             type: DataTypes.STRING,
             primaryKey: true,
@@ -18,5 +18,18 @@ function createTableSapak (pablo){
             type: DataTypes.STRING,
             allowNull: false,
           },
-    })
+          
+    },
+    {
+        schema: "store",
+    }
+    )
+    sapak.sync()
+    return{
+        schema: sapak,
+        insert: async (item) => {
+            const result = await schema.create(item);
+            return result.toJSON();
+          },
+    }
 }
