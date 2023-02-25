@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes, Model } from "sequelize";
 
+
 export async function createProduct(sequelize) {
   const product = sequelize.define(
     "products",

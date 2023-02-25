@@ -3,6 +3,7 @@ import { Sequelize, DataTypes, Model } from "sequelize";
 export async function createClient(sequelize) {
   const client = sequelize.define(
     "clients",
+
     {
       id: {
         type: DataTypes.STRING,
@@ -37,6 +38,7 @@ export async function createClient(sequelize) {
     Schema: client,
     insert: async (item) => {
       const result = await client.create(item);
+      
       return result.toJSON();
     },
     async find(item) {

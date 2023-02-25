@@ -4,6 +4,7 @@ import { initDB } from "../db/index.js";
 import { createProductRoute } from "./product.js";
 import { createSapakRoute } from "./sapak.js";
 
+
 export async function createServer() {
   const db = await initDB();
   const productRoute = createProductRoute(db);

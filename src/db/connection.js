@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 
+
 export async function getConnection() {
     const sequelize = new Sequelize({
         dialect: "postgres",

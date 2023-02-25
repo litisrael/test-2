@@ -1,5 +1,6 @@
 import express from "express";
 
+
 export function createCustomerRoute(db) {
   const router = express.Router();
 

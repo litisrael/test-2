@@ -17,5 +17,6 @@ export function createProductRoute(db) {
         res.status(400).json({ status: "invalid input" });
       }
     });
+    
   return router;
 }
