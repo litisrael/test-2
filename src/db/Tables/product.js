@@ -1,7 +1,8 @@
 import { Sequelize, DataTypes, Model } from "sequelize";
-
+import { createTableSapak } from "./sapak.js";
 
 export async function createProduct(sequelize) {
+  const sapak = await createTableSapak(sequelize);
   const product = sequelize.define(
     "products",
     {
@@ -9,9 +10,13 @@ export async function createProduct(sequelize) {
         type: DataTypes.STRING,
         primaryKey: true,
       },
-      sapak: {
+      sapakId: {
         type: DataTypes.STRING,
         allowNull: false,
+        references: {
+          model: sapak.Schema,
+          key: "companyNumber"
+        }
       },
       price: {
         type: DataTypes.STRING,
@@ -19,12 +24,12 @@ export async function createProduct(sequelize) {
       },
     },
     {
-
       schema: "store",
       timestamps: false
     }
   );
-  product.sync()
+  product.belongsTo(sapak.Schema, { foreignKey: 'sapakId' });
+  product.sync();
   return {
     Schema: product,
     insert: async (item) => {

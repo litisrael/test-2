@@ -29,6 +29,7 @@ export async function createTableSapak(sequelize) {
   );
   sapak.sync();
   return {
+    Schema:sapak,
     insert: async (item) => {
       const result = await sapak.create(item);
       return result.toJSON();

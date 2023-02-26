@@ -6,7 +6,7 @@ export async function createClient(sequelize) {
 
     {
       id: {
-        type: DataTypes.STRING,
+        type:DataTypes.INTEGER,
         primaryKey: true,
       },
       name: {
